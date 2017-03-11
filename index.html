@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- Use echarts.js -->
+    <script src="echarts.min.js"></script>
+    <script src="map.js"></script>
+</head>
+
+<body>
+    <!-- Prepare the DOM element to be held by eCharts -->
+    <div id="mybar" style="width: 600px;height:400px;"></div>
+    <div id="mymap" style="width: 600px;height:400px;"></div>
+
+    <script type="text/javascript">
+        // Initialse eCharts
+        option = {
+            "title": {
+                "text": "Hong Kong Population by gender",
+            },
+            "legend": {
+                "data": ["Male", "Female"],
+                "align": "left",
+                "top": 20,
+                "left": 10
+            },
+            "xAxis": [{
+                "type": "category",
+                "data": [
+                    1991,
+                    1996,
+                    2001
+                ],
+                "axisTick": {
+                    "alignWithLabel": true
+                }
+            }],
+            "yAxis": [{
+                "type": "value"
+            }],
+            "series": [{
+                "name": "Male",
+                "type": "bar",
+                "data": [
+                    2811991,
+                    3108107,
+                    3285344
+                ],
+                "markPoint": {
+                    "data": [{
+                        "type": "max",
+                        "name": "max"
+                    }]
+                }
+            }, {
+                "name": "Female",
+                "type": "bar",
+                "data": [
+                    2710290,
+                    3109449,
+                    3423045
+                ],
+                "markLine": {
+                    data: [
+                        [{
+                            "coord": [0, 3000000]
+                        }, {
+                            "coord": [2, 1000000]
+                        }]
+                    ]
+                }
+            }]
+        };
+        // Use the option to display chart
+        var myChart1 = echarts.init(document.getElementById('mybar'));
+        myChart1.setOption(option);
+    </script>
